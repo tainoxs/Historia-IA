@@ -198,6 +198,35 @@ main {
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
+/* Ícone animado para mobile */
+.timeline-content::after {
+    content: '\f107'; /* Ícone de seta para baixo do Font Awesome */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: pulse 1.5s infinite ease-in-out;
+    display: none; /* Escondido por padrão */
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(5px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+}
+
 /* Rodapé */
 footer {
     background-color: #1a1a1a;
@@ -241,27 +270,72 @@ footer {
         gap: 1rem;
     }
 
+    /* Ajuste da linha vertical da timeline */
     .timeline::before {
         left: 30px;
     }
 
+    /* Reorganização dos itens da timeline */
     .timeline-item {
         flex-direction: column;
         align-items: flex-start;
-        margin-left: 30px;
+        margin-left: 0;
+        padding-left: 60px;
+        position: relative;
     }
 
+    /* Ajuste do conteúdo para ocupar toda a largura */
     .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 30px;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 2.5rem; /* Aumentado de 1rem para 2.5rem para criar mais espaço */
     }
 
+    /* Reposicionamento da seta do conteúdo */
     .timeline-content::before {
-        left: -20px;
+        left: 20px;
+        top: -10px; /* Ajustado de -20px para -10px */
+        transform: rotate(90deg);
+        border-right-color: #1a1a1a;
     }
 
+    /* Posicionamento do ícone da timeline */
     .timeline-icon {
         position: absolute;
         left: 0;
+        top: 10px; /* Ajustado de 0 para 10px para criar mais espaço vertical */
+        margin-right: 0;
     }
+
+    /* Ajuste para o logo da empresa */
+    .company-logo {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Melhorias na interação e hover */
+    .timeline-item:hover .timeline-content {
+        transform: translateY(5px);
+    }
+
+    /* Ajuste nas imagens da timeline */
+    .timeline-image {
+        max-height: 200px;
+        overflow: hidden;
+    }
+    
+    /* Mostrar o ícone animado apenas na versão mobile */
+    .timeline-content::after {
+        display: block;
+    }
+}
+
+/* Classe para esconder o ícone animado quando o item é clicado */
+.icon-hidden::after {
+    display: none !important;
 }
