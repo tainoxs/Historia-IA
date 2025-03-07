@@ -45,4 +45,4 @@ Este projeto está sob a licença MIT.
 
 ## 👤 Autor
 
-[Seu Nome]
+[Taino Samuel]

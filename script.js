@@ -35,3 +35,14 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     item.style.transform = 'translateY(20px)';
     observer.observe(item);
 });
+
+// Adicionar evento de clique para esconder o ícone animado
+document.querySelectorAll('.timeline-item').forEach(item => {
+    item.addEventListener('click', function() {
+        // Adiciona uma classe ao conteúdo da timeline para esconder o ícone
+        const content = this.querySelector('.timeline-content');
+        if (content) {
+            content.classList.add('icon-hidden');
+        }
+    });
+});
